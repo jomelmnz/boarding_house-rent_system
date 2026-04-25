@@ -1,5 +1,5 @@
 <?php
-  include_once 'dbhouserent.php';
+  include_once 'includes/dbhouserent.php';
 ?>
 
 <!doctype html>

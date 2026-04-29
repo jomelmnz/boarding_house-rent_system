@@ -1,4 +1,5 @@
 <?php
+
 ?>
 
 <!doctype html>
@@ -27,7 +28,7 @@
             </div>
 
             <div class="card-body">
-                <form method="POST" action="processInputList.php">
+                <form method="POST" action="processInputList.php" enctype="multipart/form-data">
 
                     <div class="mb-3">
                         <label class="form-label">Boarding House Name</label>
@@ -41,7 +42,7 @@
 
                     <div class="mb-3">
                         <label class="form-label">Capacity</label>
-                        <input type="number" class="form-control" name="capacity" min="1" max="100" required>
+                        <input type="number" class="form-control" name="capacity" min="1" max="50" required>
                     </div>
 
                     <div class="mb-3">
@@ -49,8 +50,12 @@
                         <input type="number" class="form-control" name="price" min="1" required>
                     </div>
 
+                    <div class="mb-3">
+                        <label class="form-label">Upload Image</label>
+                        <input type="file" name="img" class="form-control" required>
+                    </div>
+                
                     <button type="submit" class="btn btn-submit w-100">Submit</button>
-
                 </form>
             </div>
         </div>

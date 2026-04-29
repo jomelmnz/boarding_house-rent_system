@@ -1,0 +1,53 @@
+.customNavBar {
+    background-color: rgb(175, 246, 223);
+}
+
+.searchBar {
+    width: 500px;
+    margin: 30px auto 0 auto;
+}
+
+.btn-primary {
+    background-color: rgb(255, 247, 247);
+    border: rgb(16, 16, 16);
+}
+
+.btn-search {
+    background-color: transparent;   
+    border: 2px solid #bab7b7;      
+    color: #4a4747;                  
+    transition: 0.3s;
+}
+
+.btn-search:hover {
+    background-color: #9aa19a;      
+    color: white;                   
+    border-color: #9aa19a;
+}
+
+.btn-rent {
+    background-color: rgb(175, 246, 223); 
+    color: rgb(26, 24, 24);
+    width: 70px;
+    border: none;
+    transition: 0.3s;
+}
+
+.btn-rent:hover {
+    background-color: rgb(152, 224, 199);
+    color: rgb(82, 80, 80);
+    transform: scale(1.05);
+}
+
+.btn-submit {
+    background-color: rgb(175, 246, 223); 
+    color: rgb(26, 24, 24);
+    width: 70px;
+    border: none;
+    transition: 0.3s;
+}
+
+.btn-submit:hover {
+    background-color: rgb(152, 224, 199);
+    color: rgb(82, 80, 80);
+}

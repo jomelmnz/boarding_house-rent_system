@@ -1,16 +1,21 @@
 <?php
+session_start();
 include_once 'includes/database.php';
-include_once 'includes/listing.php';
 
 $object = new Dbh();
 $conn = $object->connect();
 
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES['img'])) {
+if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'User-Owner') {
+    header("Location: login.php");
+    exit();
+}
 
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $bh_name  = $_POST['bh_name'];
     $city     = $_POST['city'];
     $capacity = $_POST['capacity'];
     $price    = $_POST['price'];
+    $owner_id = $_SESSION['user_id'];
 
     $targetDir = "uploads/";
     if (!is_dir($targetDir)) mkdir($targetDir, 0755, true);
@@ -23,26 +28,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES['img'])) {
 
         resizeImage($targetFilePath, $targetFilePath, 500);
 
-        $sql = "INSERT INTO tb_boardhouse (house_name, city, capacity, price, bh_status, house_image)
-                VALUES (:house_name, :city, :capacity, :price, :bh_status, :img)";
+        include_once 'includes/HouseAction.php';
 
-        $stmt = $conn->prepare($sql);
-        $stmt->bindValue(':house_name', $bh_name);
-        $stmt->bindValue(':city', $city);
-        $stmt->bindValue(':capacity', $capacity);
-        $stmt->bindValue(':price', $price);
-        $stmt->bindValue(':bh_status', 'available');
-        $stmt->bindValue(':img', $targetFilePath); // Storing the path
+    $houseManager = new HouseAction(); 
 
-        if ($stmt->execute()) {
-            header("Location: index.php?success=1");
-            exit;
-        }
+    if ($houseManager->saveHouse($bh_name, $city, $capacity, $price, $owner_id, $targetFilePath)) {
+        header("Location: index.php");
+        exit;
+    }
     } else {
         echo "Error uploading file.";
-    }
 }
-
+}
 function resizeImage($sourcePath, $destPath, $maxWidth)
 {
     list($width, $height, $type) = getimagesize($sourcePath);
@@ -89,3 +86,4 @@ function resizeImage($sourcePath, $destPath, $maxWidth)
     imagedestroy($src);
     imagedestroy($tmp);
 }
+?>

@@ -1,6 +1,12 @@
 <?php
-
+session_start();
+if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'User-Owner') {
+    header("Location: login.php");
+    exit();
+}
 ?>
+
+
 
 <!doctype html>
 <html lang="en">
@@ -42,7 +48,7 @@
 
                     <div class="mb-3">
                         <label class="form-label">Capacity</label>
-                        <input type="number" class="form-control" name="capacity" min="1" max="50" required>
+                        <input type="number" class="form-control" name="capacity" min="1" max="100" required>
                     </div>
 
                     <div class="mb-3">
@@ -54,8 +60,9 @@
                         <label class="form-label">Upload Image</label>
                         <input type="file" name="img" class="form-control" required>
                     </div>
-                
+
                     <button type="submit" class="btn btn-submit w-100">Submit</button>
+
                 </form>
             </div>
         </div>

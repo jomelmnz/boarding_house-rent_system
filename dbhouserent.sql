@@ -71,7 +71,8 @@ CREATE TABLE `tb_boardhouse` (
   `capacity` int(10) UNSIGNED NOT NULL,
   `bh_status` enum('available','full') NOT NULL DEFAULT 'available',
   `user_ID` int(11) DEFAULT NULL,
-  `price` int(11) NOT NULL
+  `price` int(11) NOT NULL,
+  `house_image` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --

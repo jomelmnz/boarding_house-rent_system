@@ -32,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $lastId = $conn->lastInsertId();
 
 
-        $sqlRole = "INSERT INTO tblink_user_role (user_ID, role_id) VALUES (?, 2)";
+        $sqlRole = "INSERT INTO tblink_user_role (user_ID, role_id) VALUES (?, 1)";
         $stmtRole = $conn->prepare($sqlRole);
         $stmtRole->execute([$lastId]);
 

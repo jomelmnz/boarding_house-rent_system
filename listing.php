@@ -1,12 +1,10 @@
 <?php
 session_start();
-if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'User-Owner') {
+if (!isset($_SESSION['role']) || ($_SESSION['role'] !== 'User' && $_SESSION['role'] !== 'User-Owner')) {
     header("Location: login.php");
     exit();
 }
 ?>
-
-
 
 <!doctype html>
 <html lang="en">

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Apr 29, 2026 at 02:22 PM
+-- Generation Time: Apr 29, 2026 at 05:33 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -79,9 +79,13 @@ CREATE TABLE `tb_boardhouse` (
 -- Dumping data for table `tb_boardhouse`
 --
 
-INSERT INTO `tb_boardhouse` (`house_ID`, `house_name`, `city`, `capacity`, `bh_status`, `user_ID`, `price`, `house_image`) VALUES
-(3, 'St Thomas House', 'Santo Tomas', 5, 'available', 1, 10000, 'uploads/house_3_1777445744.jpg'),
-(23, 'lebron', 'Onigashima', 12, 'available', NULL, 134455, 'uploads/1777465161_169845.jpg');
+INSERT INTO `tb_boardhouse` (`house_ID`, `house_name`, `city`, `capacity`, `bh_status`, `user_ID`, `price`) VALUES
+(3, 'St Thomas House', 'Santo Tomas', 5, 'available', 1, 10000),
+(4, 'Mugiwara Luffy', 'Tanauan', 3, 'available', 3, 0),
+(5, 'Mobile Legends', 'Lipa', 4, 'full', 4, 0),
+(6, 'Wano', 'Onigashima', 1, 'available', NULL, 123),
+(9, 'chester', 'jdoff', 16, 'available', NULL, 138466),
+(10, 'Wano', 'Onigashima', 12, 'available', NULL, 1234567);
 
 -- --------------------------------------------------------
 
@@ -175,7 +179,7 @@ ALTER TABLE `tbl_user`
 -- AUTO_INCREMENT for table `tb_boardhouse`
 --
 ALTER TABLE `tb_boardhouse`
-  MODIFY `house_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `house_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `tb_rent`

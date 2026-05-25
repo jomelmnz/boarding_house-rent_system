@@ -5,7 +5,7 @@ include_once 'includes/database.php';
 $object = new Dbh();
 $conn = $object->connect();
 
-if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'User-Owner') {
+if (!isset($_SESSION['role']) || ($_SESSION['role'] !== 'User' && $_SESSION['role'] !== 'User-Owner')) {
     header("Location: login.php");
     exit();
 }
@@ -25,20 +25,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $fileType = strtolower(pathinfo($targetFilePath, PATHINFO_EXTENSION));
 
     if (move_uploaded_file($_FILES["img"]["tmp_name"], $targetFilePath)) {
-
         resizeImage($targetFilePath, $targetFilePath, 500);
 
         include_once 'includes/HouseAction.php';
+        $houseManager = new HouseAction();
 
-    $houseManager = new HouseAction(); 
+        if ($houseManager->saveHouse($bh_name, $city, $capacity, $price, $owner_id, $targetFilePath)) {
+            try {
+                $sqlRole = "UPDATE tblink_user_role SET role_id = 2 WHERE user_ID = ?";
+                $stmtRole = $conn->prepare($sqlRole);
+                $stmtRole->execute([$owner_id]);
 
-    if ($houseManager->saveHouse($bh_name, $city, $capacity, $price, $owner_id, $targetFilePath)) {
-        header("Location: index.php");
-        exit;
-    }
+                $_SESSION['role'] = 'User-Owner';
+                } 
+            catch (Exception $e) {
+                echo "Error Role" . $e->getMessage();
+                exit;
+            }
+
+            header("Location: index.php");
+            exit;
+        }
     } else {
         echo "Error uploading file.";
-}
+    }
 }
 function resizeImage($sourcePath, $destPath, $maxWidth)
 {

@@ -64,13 +64,13 @@ $houses = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto align-items-center">
                     <li class="nav-item mx-3">
-                        <a class="nav-link active" aria-current="page" href="index.php">Home</a>
+                        <a class="nav-link" href="#">Home</a>
                     </li>
                     <li class="nav-item mx-3">
-                        <a class="nav-link" href="#">Catalog</a>
+                        <a class="nav-link active" aria-current="page" href="index.php">Catalog</a>
                     </li>
                     <li class="nav-item mx-3">
-                        <a class="nav-link" href="#">Account</a>
+                        <a class="nav-link" href="manage_listings.php">Account</a>
                     </li>
                 </ul>
             </div>

@@ -83,10 +83,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <div class="mb-3">
                         <input type="password" name="password" class="form-control" placeholder="Password" required>
                     </div>
+                    
+                    <button type="submit" class="btn btn-success w-100 mt-2">Login</button>
+
                     <div class="text-center mt-3">
-                        <p class="mb-2 text-muted">Don't have an account? <a href="register.php" class="fw-bold text-decoration-none" style="color: #3E3D3D;">Register</a></p>
+                        <p class="mb-0 text-muted">Don't have an account? <a href="register.php" class="fw-bold text-decoration-none" style="color: #3E3D3D;">Register</a></p>
                     </div>
-                    <button type="submit" class="btn btn-success w-100">Login</button>
                 </form>
             </div>
         </div>

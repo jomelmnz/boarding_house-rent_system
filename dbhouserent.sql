@@ -11,7 +11,6 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
 
-
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
@@ -48,16 +47,6 @@ CREATE TABLE `tbl_user` (
   `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `tbl_user`
---
-
-INSERT INTO `tbl_user` (`user_ID`, `userFname`, `userLname`, `user_email`, `contact_no`, `password`) VALUES
-(1, 'Juan', 'Dela Cruz', 'juandelacruz@gmail.com', '9297348193', '1234'),
-(2, 'Pedro', 'Penduko', 'pedropenduko@gmail.com', '9316363323', '1234'),
-(3, 'Spongebob', 'Squarepants', 'sponge@gmail.com', '933253232', '1234'),
-(4, 'Dora', 'Explorer', 'Doraexp@gmail.com', '983726323', '1234');
-
 -- --------------------------------------------------------
 
 --
@@ -74,18 +63,6 @@ CREATE TABLE `tb_boardhouse` (
   `price` int(11) NOT NULL,
   `house_image` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `tb_boardhouse`
---
-
-INSERT INTO `tb_boardhouse` (`house_ID`, `house_name`, `city`, `capacity`, `bh_status`, `user_ID`, `price`) VALUES
-(3, 'St Thomas House', 'Santo Tomas', 5, 'available', 1, 10000),
-(4, 'Mugiwara Luffy', 'Tanauan', 3, 'available', 3, 0),
-(5, 'Mobile Legends', 'Lipa', 4, 'full', 4, 0),
-(6, 'Wano', 'Onigashima', 1, 'available', NULL, 123),
-(9, 'chester', 'jdoff', 16, 'available', NULL, 138466),
-(10, 'Wano', 'Onigashima', 12, 'available', NULL, 1234567);
 
 -- --------------------------------------------------------
 
@@ -110,14 +87,6 @@ CREATE TABLE `tb_role` (
   `role_id` int(11) NOT NULL,
   `user_role` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `tb_role`
---
-
-INSERT INTO `tb_role` (`role_id`, `user_role`) VALUES
-(1, 'User'),
-(2, 'User-Owner');
 
 --
 -- Indexes for dumped tables
@@ -173,13 +142,13 @@ ALTER TABLE `tblink_user_role`
 -- AUTO_INCREMENT for table `tbl_user`
 --
 ALTER TABLE `tbl_user`
-  MODIFY `user_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `user_ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tb_boardhouse`
 --
 ALTER TABLE `tb_boardhouse`
-  MODIFY `house_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `house_ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tb_rent`
@@ -191,7 +160,7 @@ ALTER TABLE `tb_rent`
 -- AUTO_INCREMENT for table `tb_role`
 --
 ALTER TABLE `tb_role`
-  MODIFY `role_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `role_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables

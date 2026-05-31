@@ -19,9 +19,19 @@ if (!isset($_SESSION['role']) || ($_SESSION['role'] !== 'User' && $_SESSION['rol
 </head>
 
 <body class="bg-light">
-    <nav class="navbar customNavBar">
-        <div class="container-fluid">
-            <span class="navbar-brand mb-0 h1">Boarding House Rent System</span>
+    <nav class="navbar navbar-expand-lg customNavBar py-3 shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="index.php">
+                <img src="assets/images/house_rental_logo.png" alt="HouseCentral Logo" class="navbar-logo">
+            </a>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item mx-3"><a class="nav-link" href="#">Home</a></li>
+                    <li class="nav-item mx-3"><a class="nav-link" href="index.php">Catalog</a></li>
+                    <li class="nav-item mx-3"><a class="nav-link active" aria-current="page" href="manage_listings.php">Account</a></li>
+                </ul>
+            </div>
         </div>
     </nav>
 

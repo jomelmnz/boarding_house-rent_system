@@ -7,7 +7,6 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 
-// Check if a valid house ID is provided in the URL query string
 if (isset($_GET['id']) && !empty($_GET['id'])) {
     $houseId = $_GET['id'];
     $userId = $_SESSION['user_id'];

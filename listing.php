@@ -18,22 +18,91 @@ if (!isset($_SESSION['role']) || ($_SESSION['role'] !== 'User' && $_SESSION['rol
     <link href="styles.css" rel="stylesheet">
 </head>
 
-<body class="bg-light">
-    <nav class="navbar navbar-expand-lg customNavBar py-3 shadow-sm">
-        <div class="container">
-            <a class="navbar-brand" href="index.php">
-                <img src="assets/images/house_rental_logo.png" alt="HouseCentral Logo" class="navbar-logo">
-            </a>
 
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto align-items-center">
-                    <li class="nav-item mx-3"><a class="nav-link" href="#">Home</a></li>
-                    <li class="nav-item mx-3"><a class="nav-link" href="index.php">Catalog</a></li>
-                    <li class="nav-item mx-3"><a class="nav-link active" aria-current="page" href="manage_listings.php">Account</a></li>
-                </ul>
-            </div>
-        </div>
+<style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --charcoal: #2C2B2B;
+      --sage: #7BAF8A;
+      --sage-light: #D4E8D9;
+      --cream: #F7F5F2;
+      --stone: #E8E4DF;
+      --muted: #8A7B6F;
+      --white: #FAFAFA;
+    }
+
+    body{
+        padding: 50px;
+    }
+
+
+    html { scroll-behavior: smooth; }
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: var(--charcoal);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5vw;
+      height: 62px;
+      
+    }
+
+    .nav-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: 0.01em;
+    }
+
+    .nav-brand span {
+      color: var(--sage);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: #ccc;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 400;
+      letter-spacing: 0.03em;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--white); }
+
+    .nav-cta {
+      background: var(--sage);
+      color: var(--charcoal) !important;
+      padding: 0.45rem 1.1rem;
+      border-radius: 4px;
+      font-weight: 600 !important;
+    }
+</style>
+
+<nav>
+        <a href="index.php" class="nav-brand">House<span>Central</span></a>
+        <ul class="nav-links">
+            <li><a href="home.php">Home</a></li>
+            <li><a href="index.php" class="active">Catalog</a></li>
+            <li><a href="manage_listings.php">Account</a></li>
+            <?php if (!isset($_SESSION['user_id'])): ?>
+                <li><a href="login.php" class="nav-cta">Login</a></li>
+            <?php endif; ?>
+        </ul>
     </nav>
+
+<body class="bg-light">
 
     <div class="container mt-5">
         <div class="card shadow" style="width: 500px; margin: auto;">
